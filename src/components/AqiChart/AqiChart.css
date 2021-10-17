@@ -1,0 +1,7 @@
+.aqi-chart {
+  width: 60vw;
+  padding: 1.5em;
+  box-shadow: 0 7px 30px -10px rgb(150 170 180 / 50%);
+  border-radius: 20px;
+  margin-bottom: 1.5em;
+}

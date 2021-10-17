@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import { DataProvider } from "./components/data-provider/DataProvider";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomePage from "./components/HomePage";
+import CityPage from "./components/CityPage";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="aqi">
+      <DataProvider>
+        <Router>
+          <Switch>
+            <Route path="/city/:city" component={CityPage} />
+            <Route path="/" component={HomePage} />
+          </Switch>
+        </Router>
+      </DataProvider>
     </div>
   );
 }
