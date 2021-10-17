@@ -11,7 +11,7 @@ type DataType = {
   };
 };
 
-const URL = "ws://city-ws.herokuapp.com/";
+const URL = "wss://city-ws.herokuapp.com/";
 
 const DataContext = React.createContext<DataType>({} as DataType);
 
