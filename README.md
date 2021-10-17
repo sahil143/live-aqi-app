@@ -4,6 +4,9 @@ This project is coded with ❤️ using React (Typescript)
 
 This app shows live Air Quality index. Home Page shows a bar graph and a Table for all of the cities which receive live updates from the web socket. Click on any of the cities in the table to see the history of AQI in a table view and graph.
 
+https://user-images.githubusercontent.com/9278015/137636413-afc9beb9-b8ed-4fa3-b569-20b8725afaaa.mp4
+
+
 ## Dependencies
 
 This project was created using Create React App and following additional dependencies were added
