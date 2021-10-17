@@ -6,5 +6,8 @@ export const useWebSockets = (url: string, callback: (data: any) => void) => {
     webSocket.onmessage = (d) => {
       callback(JSON.parse(d.data))
     };
+    return () => {
+      webSocket.close();
+    }
   }, [url, callback]);
 };

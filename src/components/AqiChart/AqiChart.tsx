@@ -1,11 +1,13 @@
 import * as React from "react";
-import Chart, { ScriptableContext, Color, ChartType } from "chart.js/auto";
+import Chart, { ScriptableContext, Color } from "chart.js/auto";
 import { COLORS } from "../../utils";
 import "./AqiChart.css";
 
+export type ChartType = "bar" | "line";
+
 type AqiChartProps<D> = {
   data: D[];
-  type: "bar" | "line";
+  type: ChartType;
   config?: {
     stepSize?: number;
     xAxisKey?: string;
@@ -27,7 +29,7 @@ const AqiChart = <D extends {}>({
   } = {},
 }: AqiChartProps<D>) => {
   const canvasRef = React.useRef<HTMLCanvasElement>();
-  const chartRef = React.useRef<Chart<"bar" | "line", D[], unknown>>();
+  const chartRef = React.useRef<Chart<ChartType, D[], unknown>>();
   const gradientRef = React.useRef<{
     gradient: CanvasGradient | null;
     width: number | null;
@@ -95,6 +97,9 @@ const AqiChart = <D extends {}>({
   );
 
   React.useEffect(() => {
+    if (chartRef.current) {
+      chartRef.current.destroy()
+    }
     chartRef.current = new Chart(canvasRef.current, {
       type,
       data: {
@@ -136,7 +141,7 @@ const AqiChart = <D extends {}>({
       chartRef.current?.destroy();
     };
     // eslint-disable-next-line
-  }, []);
+  }, [type]);
 
   React.useEffect(() => {
     if (chartRef.current) {
